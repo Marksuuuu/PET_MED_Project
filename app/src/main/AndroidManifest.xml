@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.petmed">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_baseline_pets_24"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_baseline_pets_24"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PETMED">
+        <activity
+            android:name=".chat_activity_tabbed"
+            android:exported="false"
+            android:label="@string/title_activity_chat_tabbed"
+            android:theme="@style/Theme.PETMED.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".chatHere"
+            android:exported="false"
+            android:label="@string/title_activity_chat_here"
+            android:theme="@style/Theme.PETMED.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".chat_here"
+            android:exported="false"
+            android:label="@string/title_activity_chat_here"
+            android:theme="@style/Theme.PETMED.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".UpdateProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListProductsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProductList"
+            android:exported="false" />
+        <activity
+            android:name=".AdminProfile"
+            android:exported="false"
+            android:parentActivityName=".AdminProfile" />
+        <activity
+            android:name=".AdminLogout"
+            android:exported="false"
+            android:parentActivityName=".AdminLogout" />
+        <activity
+            android:name=".Logout"
+            android:exported="false"
+            android:parentActivityName=".Logout" />
+        <activity
+            android:name=".Guide"
+            android:exported="false"
+            android:parentActivityName=".Guide" />
+        <activity
+            android:name=".About"
+            android:exported="false"
+            android:parentActivityName=".About" />
+        <activity
+            android:name=".Profile"
+            android:exported="false"
+            android:parentActivityName=".Profile" />
+        <activity
+            android:name=".AdminTransaction"
+            android:exported="false"
+            android:parentActivityName=".AdminTransaction" />
+        <activity
+            android:name=".AdminGrooming"
+            android:exported="false"
+            android:parentActivityName=".AdminGrooming" />
+        <activity
+            android:name=".AdminAppointment"
+            android:exported="false"
+            android:parentActivityName=".AdminAppointment" />
+        <activity
+            android:name=".AdminOrder"
+            android:exported="false"
+            android:parentActivityName=".AdminOrder" />
+        <activity
+            android:name=".AdminFood"
+            android:exported="false"
+            android:parentActivityName=".AdminFood" />
+        <activity
+            android:name=".AdminShop"
+            android:exported="false"
+            android:parentActivityName=".AdminShop" />
+        <activity
+            android:name=".Registration"
+            android:exported="false">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".Login"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Admin"
+            android:exported="false" />
+        <activity
+            android:name=".Transactions"
+            android:exported="false"
+            android:parentActivityName=".Transactions" />
+        <activity
+            android:name=".Products"
+            android:exported="false"
+            android:parentActivityName=".Products" />
+        <activity
+            android:name=".grooming"
+            android:exported="false"
+            android:parentActivityName=".grooming" />
+        <activity
+            android:name=".Appointment"
+            android:exported="false"
+            android:parentActivityName=".Appointment" />
+        <activity
+            android:name=".Splash"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

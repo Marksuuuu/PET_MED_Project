@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "78035165271",
+    "firebase_url": "https://pet-med-8a8bc-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "pet-med-8a8bc",
+    "storage_bucket": "pet-med-8a8bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78035165271:android:bec506189dbe2c41f98312",
+        "android_client_info": {
+          "package_name": "com.example.petmed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78035165271-hi5n5vki56m0jlhof0ph8g6nl2v008rq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRyG2x12PmAtPWqnSQi5-p13De6apWsjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "78035165271-hi5n5vki56m0jlhof0ph8g6nl2v008rq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78035165271:android:d4745b289ff0aa97f98312",
+        "android_client_info": {
+          "package_name": "com.project.petmed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78035165271-q2fe2jlb7m21b1idjfqda7m099k9b7ql.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.petmed",
+            "certificate_hash": "e93b90717da23ff2d663d4a93b0b3e5a3bd106dd"
+          }
+        },
+        {
+          "client_id": "78035165271-hi5n5vki56m0jlhof0ph8g6nl2v008rq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRyG2x12PmAtPWqnSQi5-p13De6apWsjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "78035165271-hi5n5vki56m0jlhof0ph8g6nl2v008rq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
