@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/cutcard"
+    tools:context=".chat_user_here">
+
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/my_toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:background="@color/skyblue"-->
+<!--        android:elevation="4dp"-->
+<!--        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"-->
+<!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">-->
+
+<!--        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--            android:id="@+id/myImageontoolbar"-->
+<!--            android:layout_width="8mm"-->
+<!--            android:layout_height="8mm"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:src="@drawable/ic_face_foreground" />-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/NameTv"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="sans-serif-medium"-->
+<!--                android:text="PETMED"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textSize="18sp" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/UserStatus"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="sans-serif-medium"-->
+<!--                android:text="Online"-->
+<!--                android:textColor="@color/ygreen" />-->
+
+
+<!--        </LinearLayout>-->
+
+<!--    </androidx.appcompat.widget.Toolbar>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ChatRecycle"
+        android:layout_width="408dp"
+        android:layout_height="731dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="-1dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="1dp" />
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/ChatLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:background="@color/cyan"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal">-->
+
+
+<!--        <EditText-->
+<!--            android:id="@+id/Messaget"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/white"-->
+<!--            android:hint="Start typing..."-->
+<!--            android:inputType="textCapSentences|textMultiLine"-->
+<!--            android:padding="14dp" />-->
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/SendButton"-->
+<!--            android:background="@color/white"-->
+
+<!--            android:src="@drawable/ic_baseline_send_24"-->
+<!--            android:layout_width="70dp"-->
+<!--            android:layout_height="55dp"/>-->
+
+<!--    </LinearLayout>-->
+
+
+
+
+</RelativeLayout>
