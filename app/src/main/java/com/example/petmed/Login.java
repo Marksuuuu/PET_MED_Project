@@ -18,12 +18,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
 
@@ -33,61 +33,91 @@ public class Login extends AppCompatActivity {
     GoogleSignInClient gsc;
     ImageView googleBtn;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-        final TextView TextLog = findViewById(R.id.TextLog);
-        final EditText EditTextEmail = findViewById(R.id.emailAddress);
-        final EditText EditTextpasswordvar = findViewById(R.id.EditTextpassword);
-        final Button loginBtn = findViewById(R.id.loginBtn);
-        final TextView Register = findViewById(R.id.Register);
-        final ProgressBar progressBar = findViewById(R.id.progressBar);
+        FirebaseAuth auth;
+        EditText email = findViewById(R.id.emailAddress);
+        EditText password = findViewById(R.id.EditTextpassword);
+        Button loginBtn = findViewById(R.id.loginBtn);
+        TextView Register = findViewById(R.id.Register);
+        ProgressBar progressBar = findViewById(R.id.progressBar);
 
         googleBtn = findViewById(R.id.loginasgoogle);
 
         gso = new GoogleSignInOptions.Builder(gso.DEFAULT_SIGN_IN).requestEmail().build();
         gsc = GoogleSignIn.getClient(this,gso);
 
+        auth = FirebaseAuth.getInstance();
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String EditTextEmailAddressVar = EditTextEmail.getText().toString();
-                final String EditTextpassVal = EditTextpasswordvar.getText().toString();
+                String email_var = email.getText().toString();
+                String pass_var = password.getText().toString();
 
 
-                if(EditTextEmailAddressVar.isEmpty() || EditTextpassVal.isEmpty()){
-                    Toast.makeText(Login.this,"Please Enter your Email and Password", Toast.LENGTH_SHORT).show();
+                if(email_var.isEmpty() || pass_var.isEmpty()) {
+                    Toast.makeText(Login.this, "Please Enter your Email and Password , FOOOOOLL!", Toast.LENGTH_SHORT).show();
                 }else{
-                    databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.hasChild(EditTextEmailAddressVar)){
-                                if(EditTextpassVal.equals(EditTextEmailAddressVar)){
-                                    startActivity(new Intent(Login.this, MainActivity.class));
-                                    finish();
-                                }else{
-                                    Toast.makeText(Login.this, "Please Check Carefully", Toast.LENGTH_SHORT).show();
+                    auth.signInWithEmailAndPassword(email_var,pass_var)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if(task.isSuccessful()){
+                                        Intent intent = new Intent(Login.this, MainActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
+                                        finish();
+                                    }else{
+                                        Toast.makeText(Login.this,"Authentication Failed , You FOOOOOL!", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }else{
-                                Toast.makeText(Login.this, "Details Not Found", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-
-
+                            });
                 }
-
             }
         });
+
+
+//        loginBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                final String emailAddressVar = email.getText().toString();
+//                final String EditTextpassVal = password.getText().toString();
+//
+//
+//                if(emailAddressVar.isEmpty() || EditTextpassVal.isEmpty()){
+//                    Toast.makeText(Login.this,"Please Enter your Email and Password", Toast.LENGTH_SHORT).show();
+//                }else{
+//                    databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                            if(snapshot.hasChild(emailAddressVar)){
+//                                if(EditTextpassVal.equals(emailAddressVar)){
+//                                    startActivity(new Intent(Login.this, MainActivity.class));
+//                                    finish();
+//                                }else{
+//                                    Toast.makeText(Login.this, "Please Check Carefully", Toast.LENGTH_SHORT).show();
+//                                }
+//                            }else{
+//                                Toast.makeText(Login.this, "Details Not Found", Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError error) {
+//
+//                        }
+//                    });
+//
+//
+//                }
+//
+//            }
+//        });
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -35,8 +35,9 @@ public class User_ChatFragment extends Fragment {
 //        ViewPager viewPager1 = (ViewPager) view.findViewById(R.id.chats);
         ViewPageAdapter viewPageAdapter = new ViewPageAdapter(getActivity().getSupportFragmentManager());
 
-        viewPageAdapter.addFragments(new user_fragment_chat(), "Users");
         viewPageAdapter.addFragments(new chat_user(), "Chats");
+        viewPageAdapter.addFragments(new chat_user_here(), "Users");
+
 
         viewPager.setAdapter(viewPageAdapter);
 //        viewPager1.setAdapter(viewPageAdapter);

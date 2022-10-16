@@ -14,4 +14,6 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="title_activity_chat_tabbed">chat_activity_tabbed</string>
+    <string name="title_activity_view_of_user">viewOfUser</string>
+    <string name="title_activity_message">message_activity</string>
 </resources>

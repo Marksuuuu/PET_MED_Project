@@ -11,29 +11,19 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_baseline_pets_24"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PETMED">
+        android:theme="@style/Theme.PETMED"
+        android:usesCleartextTraffic="true">
         <activity
-            android:name=".chat_activity_tabbed"
-            android:exported="false"
-            android:label="@string/title_activity_chat_tabbed"
-            android:theme="@style/Theme.PETMED.NoActionBar">
+            android:name=".MainActivityChat"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".chatHere"
+            android:name=".message_activity"
             android:exported="false"
-            android:label="@string/title_activity_chat_here"
-            android:theme="@style/Theme.PETMED.NoActionBar">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".chat_here"
-            android:exported="false"
-            android:label="@string/title_activity_chat_here"
+            android:label="@string/title_activity_message"
             android:theme="@style/Theme.PETMED.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
