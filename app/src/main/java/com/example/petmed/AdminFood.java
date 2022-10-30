@@ -18,7 +18,7 @@ public class AdminFood extends AppCompatActivity {
          findViewById(R.id.btnToViewProducts).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AdminFood.this, ListProductsActivity.class));
+                startActivity(new Intent(AdminFood.this, ProductList.class));
             }
         });
 

@@ -16,4 +16,10 @@
     <string name="title_activity_chat_tabbed">chat_activity_tabbed</string>
     <string name="title_activity_view_of_user">viewOfUser</string>
     <string name="title_activity_message">message_activity</string>
+    <string name="product">Product :</string>
+    <string name="p00_00">P00.00</string>
+    <string name="description">description</string>
+    <string name="details">Details:</string>
+    <string name="sample">sample</string>
+    <string name="todo">TODO</string>
 </resources>

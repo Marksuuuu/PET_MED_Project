@@ -36,9 +36,7 @@ import okhttp3.internal.Util;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 public class AddProductActivity extends AppCompatActivity {
-
     private static final int PICK_IMAGE_REQUEST = 200;
     private EditText etId, etName, etImageURL, etPrice, etDescription;
     Button btn_Add;
@@ -51,7 +49,6 @@ public class AddProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
-
         etId = findViewById(R.id.etId);
         etName = findViewById(R.id.etName);
         etImageURL = findViewById(R.id.etImageURL);
@@ -59,36 +56,28 @@ public class AddProductActivity extends AppCompatActivity {
         etDescription = findViewById(R.id.etDescription);
         btn_Add = findViewById(R.id.btn_add);
         upload = findViewById(R.id.imgupload);
-
         storage = FirebaseStorage.getInstance();
         storeReference = storage.getReference();
-
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 pictureselect();
             }
         });
-
         productref = FirebaseDatabase.getInstance().getReference().child("products");
         btn_Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 addProduct();
             }
         });
     }
-
-
-
     private void pictureselect() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         launchSomeActivity.launch(intent);
     }
-
     ActivityResultLauncher<Intent> launchSomeActivity
             = registerForActivityResult(
             new ActivityResultContracts
@@ -97,13 +86,13 @@ public class AddProductActivity extends AppCompatActivity {
                 if (result.getResultCode()
                         == Activity.RESULT_OK) {
                     Intent data = result.getData();
-                    // do your operation from here....
+
                     if (data != null
                             && data.getData() != null) {
                         selectedImageUri  = data.getData();
-                        Bitmap selectedImageBitmap = null;
+                        Bitmap qwetryui = null;
                         try {
-                            selectedImageBitmap
+                            qwetryui
                                     = MediaStore.Images.Media.getBitmap(
                                     this.getContentResolver(),
                                     selectedImageUri);
@@ -111,11 +100,10 @@ public class AddProductActivity extends AppCompatActivity {
                         catch (IOException e) {
                             e.printStackTrace();
                         }
-                        upload.setImageBitmap(selectedImageBitmap);
+                        upload.setImageBitmap(qwetryui);
                     }
                 }
             });
-
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 //        super.onActivityResult(requestCode, resultCode, data);
@@ -127,53 +115,35 @@ public class AddProductActivity extends AppCompatActivity {
 //            Toast.makeText(AddProductActivity.this,"Error ", Toast.LENGTH_SHORT).show();
 //        }
 //    }
-
     private void addProduct() {
-
-
         long id = Long.parseLong(etId.getText().toString().trim());
         String name = etName.getText().toString().trim();
         String imageURL = etImageURL.getText().toString().trim();
         double price = Double.parseDouble(etPrice.getText().toString().trim());
         String description = etDescription.getText().toString().trim();
-
-
-
-
-
-
         if(TextUtils.isEmpty(name) || TextUtils.isEmpty(imageURL) || TextUtils.isEmpty(description)){
             Toast.makeText(AddProductActivity.this,"Empty field!, Error ", Toast.LENGTH_SHORT).show();
         }else {
-
             StorageReference riversRef = storeReference.child("images/"+ id);
-            riversRef.putFile(selectedImageUri)
-
-// Register observers to listen for when the download is done or if it fails
-            .addOnFailureListener(new OnFailureListener() {
+            riversRef.putFile(selectedImageUri).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
-                    // Handle unsuccessful uploads
                     Toast.makeText(AddProductActivity.this,"something went wrong!, Upload Error ", Toast.LENGTH_SHORT).show();
                 }
             }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
-                    Toast.makeText(AddProductActivity.this,"Success", Toast.LENGTH_SHORT).show();
-                    // ...
-                }//
+                    Toast.makeText(AddProductActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                }
             });
             Product product = new Product(id,name,imageURL,price,description);
             productref.push().setValue(product);
             Toast.makeText(AddProductActivity.this,"Adding Product, Success!", Toast.LENGTH_SHORT).show();
         }
-
         etId.getText().clear();
         etName.getText().clear();
         etImageURL.getText().clear();
         etPrice.getText().clear();
         etDescription.getText().clear();
-
     }
 }

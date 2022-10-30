@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#333"
+    android:background="@drawable/cutcard"
     android:padding="2dp"
-    tools:context=".ListProductsActivity">
+    tools:context=".ProductList">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/revProducts"
+        android:id="@+id/productlist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#333"
+        android:background="@drawable/cutcard"
         android:padding="2dp" />
 
 
