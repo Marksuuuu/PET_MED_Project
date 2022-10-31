@@ -34,6 +34,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
     @Override
     public void onBindViewHolder(@NonNull AppointmentAdapter.ViewHolder holder, int position) {
         App app = list.get(position);
+        holder.date.setText(app.getDate());
         holder.symptoms.setText(app.getSymptoms());
         holder.name.setText(app.getName());
         holder.time.setText(app.getTime());
