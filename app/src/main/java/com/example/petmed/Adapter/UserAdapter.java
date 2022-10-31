@@ -17,7 +17,7 @@ import com.example.petmed.model.User;
 
 import java.util.List;
 
-public class UserAdapter extends RecyclerView.Adapter {
+public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     private Context context;
     private List<User> mUsers;
@@ -36,9 +36,14 @@ public class UserAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         User user = mUsers.get(position);
-
+        holder.Fullname.setText(user.getFullname());
+//        if (user.getImageUrl().equals("default")){
+//            holder.profile_image.setImageResource(R.mipmap.ic_launcher);
+//        }else{
+//            Glide.with(context).load(user.getImageUrl()).into(holder.profile_image);
+//        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +53,6 @@ public class UserAdapter extends RecyclerView.Adapter {
                 context.startActivity(intent);
             }
         });
-
     }
 
     @Override
@@ -58,14 +62,14 @@ public class UserAdapter extends RecyclerView.Adapter {
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView username1;
-        public ImageView profile_image1;
+        public TextView Fullname;
+        public ImageView profile_image;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            username1= itemView.findViewById(R.id.username);
-            profile_image1 = itemView.findViewById(R.id.profile_image);
+            Fullname= itemView.findViewById(R.id.fullname);
+            profile_image = itemView.findViewById(R.id.profile_image);
 
         }
     }
