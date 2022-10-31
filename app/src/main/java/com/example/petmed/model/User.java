@@ -2,17 +2,21 @@ package com.example.petmed.model;
 
 public class User {
     private String id;
-    private String username;
+    private String Fullname;
     private String imageUrl;
 
 
-    public void setUsername(String id,String imageUrl,String username) {
-        this.username = username;
+    public void setFullname(String id,String imageUrl,String Fullname) {
+        this.Fullname = Fullname;
         this.id = id;
         this.imageUrl = imageUrl;
     }
     public User(){
 
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     public String getId() {
@@ -23,11 +27,11 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getFullname() {
+        return Fullname;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setFullname(String Fullname) {
+        this.Fullname = Fullname;
     }
 }
