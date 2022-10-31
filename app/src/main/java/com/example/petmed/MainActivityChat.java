@@ -38,8 +38,7 @@ public class MainActivityChat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_chat);
 
-        imageButton = findViewById(R.id.SendButton);
-        editText = findViewById(R.id.Messaget);
+
 
 
 //
@@ -54,27 +53,30 @@ public class MainActivityChat extends AppCompatActivity {
 //            }
 //        });
 //
-//        fullname = findViewById(R.id.fullname);
+        imageButton = findViewById(R.id.SendButton);
+        editText = findViewById(R.id.Messaget);
+        fullname = findViewById(R.id.fullName);
 
         intent = getIntent();
-//
-        final String userid = intent.getStringExtra("id");
-//
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
 
+        final String id = intent.getStringExtra("userid");
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String msg = editText.getText().toString();
                 if(!msg.equals("")){
-                    sendMessage(firebaseUser.getUid(),userid, msg);
+                    sendMessage(firebaseUser.getUid(),id,msg);
                 }else {
                     Toast.makeText(MainActivityChat.this,"You Cannot Send Empty Message You Fooooool!. ", Toast.LENGTH_SHORT).show();
                 }
                 editText.setText("");
             }
         });
+        
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(id);
+
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
