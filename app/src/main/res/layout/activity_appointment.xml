@@ -152,6 +152,7 @@
         android:textColor="@color/white" />
 
     <Button
+        android:id="@+id/setbtn"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_below="@id/btn_time"

@@ -8,9 +8,7 @@ public class Product {
     private double price;
     private String description;
 
-    public long getId() {
-        return id;
-    }
+
 
     public Product(long id, String name, String image, double price, String description) {
         this.id = id;
@@ -20,6 +18,9 @@ public class Product {
         this.description = description;
     }
 
+    public long getId() {
+        return id;
+    }
     public String getName() {
         return name;
     }

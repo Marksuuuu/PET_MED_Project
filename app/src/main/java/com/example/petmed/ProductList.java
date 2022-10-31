@@ -21,43 +21,44 @@ import java.util.ArrayList;
 
 class ProductList extends AppCompatActivity {
 
+    RecyclerView recyclerView;
+    DatabaseReference databaseReference;
+    connector connector;
+    ArrayList<productdetails> arraylist;
+
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.productcard);
+        setContentView(R.layout.activity_product_list);
 
 
-//        RecyclerView recyclerView;
-//        DatabaseReference databaseReference;
-//        connector connector;
-//        ArrayList<productdetails> arraylist;
-//
-//        recyclerView = findViewById(R.id.productlist);
-//        databaseReference = FirebaseDatabase.getInstance().getReference("products");
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//
-//        arraylist = new ArrayList<>();
-//        connector = new connector(this,arraylist);
-//        recyclerView.setAdapter(connector);
-//
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-//                    productdetails productdetails = dataSnapshot.getValue(productdetails.class);
-//                    arraylist.add(productdetails);
-//                }
-//                connector.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+
+        recyclerView = findViewById(R.id.productlist);
+        databaseReference = FirebaseDatabase.getInstance().getReference("products");
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        arraylist = new ArrayList<>();
+        connector = new connector(this,arraylist);
+        recyclerView.setAdapter(connector);
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    productdetails productdetails = dataSnapshot.getValue(productdetails.class);
+                    arraylist.add(productdetails);
+                }
+                connector.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
 
