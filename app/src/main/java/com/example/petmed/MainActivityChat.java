@@ -59,23 +59,23 @@ public class MainActivityChat extends AppCompatActivity {
 
         intent = getIntent();
 
-        final String id = intent.getStringExtra("userid");
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        String reguser = firebaseUser.getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(reguser);
         
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String msg = editText.getText().toString();
                 if(!msg.equals("")){
-                    sendMessage(firebaseUser.getUid(),id,msg);
+                    sendMessage(firebaseUser.getUid(),reguser,msg);
                 }else {
                     Toast.makeText(MainActivityChat.this,"You Cannot Send Empty Message You Fooooool!. ", Toast.LENGTH_SHORT).show();
                 }
                 editText.setText("");
             }
         });
-        
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(id);
+
 
 
         databaseReference.addValueEventListener(new ValueEventListener() {

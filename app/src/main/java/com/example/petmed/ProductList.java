@@ -1,14 +1,14 @@
 package com.example.petmed;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-
-
+import com.example.petmed.Adapter.ProductAdapter;
+import com.example.petmed.model.Prod;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,8 +23,9 @@ class ProductList extends AppCompatActivity {
 
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
-    connector connector;
-    ArrayList<productdetails> arraylist;
+    ProductAdapter productAdapter;
+    ArrayList<Prod> prods;
+
 
 
 
@@ -33,25 +34,23 @@ class ProductList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_list);
 
-
-
         recyclerView = findViewById(R.id.productlist);
-        databaseReference = FirebaseDatabase.getInstance().getReference("products");
+        databaseReference = FirebaseDatabase.getInstance().getReference("appointment");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        arraylist = new ArrayList<>();
-        connector = new connector(this,arraylist);
-        recyclerView.setAdapter(connector);
 
+        prods = new ArrayList<>();
+        productAdapter = new ProductAdapter(this,prods);
+        recyclerView.setAdapter(productAdapter);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    productdetails productdetails = dataSnapshot.getValue(productdetails.class);
-                    arraylist.add(productdetails);
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    Prod prod = dataSnapshot.getValue(Prod.class);
+                    prods.add(prod);
                 }
-                connector.notifyDataSetChanged();
+                productAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -59,6 +58,9 @@ class ProductList extends AppCompatActivity {
 
             }
         });
+
+
+
 
 
 
