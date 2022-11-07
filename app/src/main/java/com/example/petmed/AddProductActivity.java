@@ -134,6 +134,7 @@ public class AddProductActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Toast.makeText(AddProductActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             });
             Product product = new Product(id,name,imageURL,price,description);

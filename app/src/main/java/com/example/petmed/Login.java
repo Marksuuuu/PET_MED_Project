@@ -47,6 +47,7 @@ public class Login extends AppCompatActivity {
         EditText password = findViewById(R.id.EditTextpassword);
         Button loginBtn = findViewById(R.id.loginBtn);
         TextView Register = findViewById(R.id.Register);
+        TextView forgotpass = findViewById(R.id.forgotpass);
         ProgressBar progressBar = findViewById(R.id.progressBar);
 
         googleBtn = findViewById(R.id.loginasgoogle);
@@ -155,6 +156,12 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Login.this, Registration.class));
+            }
+        });
+        forgotpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Login.this, ForgotpasswordActivity.class));
             }
         });
 
